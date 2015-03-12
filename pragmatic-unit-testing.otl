@@ -1,0 +1,211 @@
+Pragmatic Unit Testing
+About me
+	Sam Stokes
+	Engineer, Pulse Feed
+	San Francisco
+	Background
+		Tiny startups (Rapportive)
+		Tech companies (Bloomberg, LinkedIn)
+		Most programming languages
+What to expect
+	A more effective way to think about testing
+	Rules of thumb to prioritise testing effort
+	No code - sorry!
+Overview
+	>MARKDOWN
+	><img class="full" src="testing.jpg"/>
+Overview
+	Philosophy
+		What is the point of testing?
+	Dogma
+		The Ten Commandments
+	Practice
+		How should we test in the real world?
+Philosophy
+	What is the point of testing?
+Testing is not about finding bugs
+	You just wrote the code
+	And probably tested it!
+	Most bugs will probably happen later...
+What is the point of testing?
+	>MARKDOWN
+	>> The job of automatic testing is not to prove the absence of bugs, but to
+	>> establish a trusted lower limit for quality: it shows us that certain
+	>> things work and will notify us if we ever break them. This gives us, the
+	>> developers, more confidence that the changes we make are not too
+	>> destructive, and notifies us if they are.
+	>
+	>&mdash; [A proposal for an always-releasable Debian](https://lwn.net/Articles/550032/)
+What is the point of testing?
+	>MARKDOWN
+	>> The job of automatic testing is not to prove the absence of bugs, but to
+	>> establish a trusted lower limit for **quality**: it shows us that certain
+	>> things work and will notify us if we ever break them. This gives us, the
+	>> developers, more **confidence** that the changes we make are not too
+	>> destructive, and notifies us if they are.
+	Quality
+	Confidence
+Quality
+	Testing makes you think about:
+		Edge cases
+		Dependencies
+		Abstractions before implementation details
+Confidence
+	Living documentation of what works
+		You know if it breaks
+		So do others!
+	Guards against bit rot
+	Continuous integration
+		Prevents "works on my machine"
+Tested code is better code
+	"Can we handle this field being null?"
+		"Yes, we have a test for that case"
+		as opposed to "Hold on while I carefully check every code path"
+	"Did our refactoring break anything?"
+		"No, our tests pass so I'm confident."
+		as opposed to "Let's ramp to company and hope"
+	>MARKDOWN
+	>> To me, legacy code is simply code without tests.
+	>
+	>&mdash; Michael Feathers, *Working Effectively with Legacy Code*
+Philosophy
+	What is the point of testing?
+	To produce high quality code we are confident in.
+		Confident we know what it does
+		Confident we can change it later
+Dogma
+	The Ten Commandments
+		Thou shalt aim for 100% code coverage
+		Thou shalt write thy tests first
+		Thou shalt not ship code without tests
+		hmmm...
+Code coverage
+	Very rough metric of "testedness"
+	Increasing is good
+	Strict coverage goals considered harmful
+		People inevitably work around it
+		100% is just silly
+"Weighted" code coverage
+	Where do you want more confidence?
+		>MARKDOWN
+		>Highest business value
+		>
+		>Most likely to break
+		>
+		>Likely to break *quietly*
+		>
+		>Hardest to fix
+	This is harder to measure :(
+		Coverage % as a proxy metric
+Test-first / TDD
+	Useful tool, not a religion
+	Redirects time pressure to skip testing
+		:"I got it working, now I'm just writing the tests."
+		:
+		:"It's done, so let's ship it and move on."
+	Often easier to write tests first!
+		:Otherwise you risk writing the code once, then having to rewrite it
+		:so it's testable.
+The One Commandment
+	>MARKDOWN
+	>## Thou shalt not give a "ship it" without tests
+	>
+	>Unless there's a really good reason
+	>
+	>Use the "Testing Done" field
+	>
+	>Try to answer the question: "what gives you confidence in this change?"
+Practice
+	How should we test in the real world?
+Care about testing
+	We'll only be good at it if we believe it's worth it
+	Invest in making it easy and fast
+	Convey confidence and pride to others
+		Give a tech talk on your test strategy!
+Example: Content Ecosystem Digest v2
+	1/3 of all content traffic
+	Luke Duncan and Zhifei Song
+	Hadoop / Scalding
+	90% test coverage
+	High confidence despite many dependencies
+		"My tests pass - what about yours?"
+Culture of testing
+	This only works if it's part of the culture
+		Not just engineering - product, design, business
+	It's not just polish: it's building a great product!
+	Has to be okay to care about it
+		"I don't want to be that guy that holds up the RB"
+		Make sure everyone sees you caring about it
+Confidence
+	"Quality" is subjective and abstract
+		hard to reason about in the face of deadlines
+		Engineer: "This isn't good enough to ship"
+		PM: "We don't have time to make it perfect"
+	Sell your colleagues on the value
+	Frame the discussion around confidence
+		Engineer: "If we ship now I'm only 75% confident"
+		PM: "How long do you need to get to 90%?"
+Be disciplined
+	Make time for testing
+		If it'll be hard to test, bump up your estimate
+	Code review the tests too
+		Can you understand what they're testing?
+		Do they actually verify anything, or just execute the code?
+		If there aren't any, ask why!
+	Thou shalt not give a "ship it" without tests
+Be disciplined
+	Test whatever needs it
+		Templates / big giant JSON blobs
+		Code which "just calls a Restli endpoint" - what about error handling?
+		Hadoop flows
+		Tracking
+	If you don't know how to test it
+		Escalate
+		Budget time
+		Engage Test Engineering for support
+Example: RTF-EX
+	Zachary Glagola
+	Extends Restli Test Framework
+	Generate mocks for unit tests
+	Makes mocking out Restli calls much easier
+Be pragmatic
+	Coverage
+		For new code: shoot for 50%-80%
+		For other code: add tests as needed
+	What to test
+		>MARKDOWN
+		>Code with high member value
+		>
+		>Important logic
+		>
+		>Subtle bits
+		>
+		>Details that other people depend on!
+		>
+		>Things users *don't* see
+Make tradeoffs
+	hard to test vs hard to fix
+	important/subtle vs hard to test
+Discipline vs pragmatism
+	Bad reasons to skip testing:
+		it's hard - invest in making it easy!
+		product wants to know when it's shipping
+Discipline vs pragmatism
+	Good reasons to skip testing (if you have to):
+		it's throwaway code (with an EOL date)
+		there's a bona fide emergency
+Summary
+	The point of testing is to produce high quality code we are confident in.
+	Be disciplined
+		make time for testing
+	Be pragmatic
+		Prioritise what to test
+	Build a testing culture
+		Frame discussions around confidence
+	Talk to your Test Engineers!
+	>MARKDOWN
+	>## Book: *Working Effectively with Unit Tests*
+	>
+	>Jay Fields
+	>
+	>https://leanpub.com/wewut

@@ -1,0 +1,80 @@
+body { font-family: Ubuntu }
+code { font-family: Ubuntu Mono }
+
+pre.sourceCode {
+  border-radius: 5px;
+}
+
+pre.sourceCode.ruby {
+  font-size: 80%;
+}
+pre.sourceCode.RUBY {
+  font-size: 150%;
+  line-height: 1em;
+}
+pre.sourceCode.rUbY {
+  font-size: 300%;
+  line-height: 1em;
+}
+
+p > code {
+  background-color: #E4E5E7;
+  padding: 2px;
+  border: 1px solid #95abd0; /* match pre.sourceCode border-color */
+  border-radius: 3px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 160%;
+}
+h2 { font-size: 120% }
+h3 { font-size: 100% }
+
+.huge {
+  font-size: 400%;
+  line-height: 3em;
+  text-align: center;
+}
+
+.slide > p {
+  margin-left: 4em;
+  display: list-item;
+}
+
+.slide > img {
+  float: left;
+  margin-bottom: 4%;
+  margin-right: 8%;
+  max-width: 40%;
+}
+
+.slide img.full {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.left-half {
+  float: left;
+  margin-bottom: 8%;
+  margin-right: 8%;
+  max-width: 40%;
+}
+
+table caption {
+  font-variant: small-caps
+}
+
+tr.odd {
+  background: #ddd
+}
+
+tr.even {
+  background: #f2f2f2
+}
+
+code.sourceCode.bash:before {
+  content: "$ ";
+  color: #95abd0; /* match pre.sourceCode border-color */
+}
